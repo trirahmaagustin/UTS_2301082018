@@ -74,23 +74,21 @@ class _FormEntryScreenState extends State<FormEntryScreen> {
     super.dispose();
   }
 
-  // Function to select date from the calendar
   void _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: selectedDate ?? DateTime.now(), // Use selectedDate if not null, otherwise default to current date
+      initialDate: selectedDate ?? DateTime.now(), 
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
-        _tanggalController.text = "${picked.toLocal()}".split(' ')[0]; // Format the date to 'yyyy-MM-dd'
+        _tanggalController.text = "${picked.toLocal()}".split(' ')[0]; 
       });
     }
   }
 
-  // Function to validate and submit form
   void _submitForm() {
     if (_kodeController.text.isEmpty || 
         _namaPeminjamController.text.isEmpty || 
@@ -99,14 +97,13 @@ class _FormEntryScreenState extends State<FormEntryScreen> {
         _namaNasabahController.text.isEmpty || 
         _jumlahPinjamanController.text.isEmpty ||  
         _lamaPinjamanController.text.isEmpty ||
-        selectedDate == null) { // Check if selectedDate is not null
+        selectedDate == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Masukkan semua data yang diperlukan')),
       );
       return;
     }
 
-    // Navigate to ResultScreen with the gathered data
     Navigator.push(
       context,
       MaterialPageRoute(
@@ -124,18 +121,13 @@ class _FormEntryScreenState extends State<FormEntryScreen> {
     );
   }
 
-  // Function to handle drawer item selection
   void _onDrawerItemTapped(BuildContext context, String item) {
-    // Handle navigation based on the selected item
-    Navigator.pop(context); // Close the drawer first
+    Navigator.pop(context);
     if (item == 'Home') {
-      // Navigate to home or main screen
-      // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));
+      
     } else if (item == 'About') {
-      // Navigate to about screen
-      // Navigator.push(context, MaterialPageRoute(builder: (context) => AboutScreen()));
+      
     }
-    // Add more conditions for additional items
   }
 
   @override
@@ -165,11 +157,10 @@ class _FormEntryScreenState extends State<FormEntryScreen> {
               title: const Text('Form Peminjaman'),
               onTap: () => _onDrawerItemTapped(context, 'Form Peminjaman'),
             ),
-            // Add more ListTiles for additional items
           ],
         ),
       ),
-      body: SingleChildScrollView( // Wrap with SingleChildScrollView to enable scrolling
+      body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -179,37 +170,37 @@ class _FormEntryScreenState extends State<FormEntryScreen> {
                 controller: _kodeController,
                 decoration: const InputDecoration(labelText: 'Kode'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _namaPeminjamController,
                 decoration: const InputDecoration(labelText: 'Nama Peminjam'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _kodePeminjamanController,
                 decoration: const InputDecoration(labelText: 'Kode Peminjaman'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _kodeNasabahController,
                 decoration: const InputDecoration(labelText: 'Kode Nasabah'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _namaNasabahController,
                 decoration: const InputDecoration(labelText: 'Nama Nasabah'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _jumlahPinjamanController,
                 decoration: const InputDecoration(labelText: 'Jumlah Pinjaman'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _lamaPinjamanController,
                 decoration: const InputDecoration(labelText: 'Lama Pinjaman'),
               ),
-              const SizedBox(height: 12), // Adjusted spacing
+              const SizedBox(height: 12), 
               TextFormField(
                 controller: _tanggalController,
                 readOnly: true,
@@ -221,7 +212,7 @@ class _FormEntryScreenState extends State<FormEntryScreen> {
                   ),
                 ),
               ),
-              const SizedBox(height: 24), // Spacing before the button
+              const SizedBox(height: 24), 
               ElevatedButton(
                 onPressed: _submitForm,
                 child: const Text(
