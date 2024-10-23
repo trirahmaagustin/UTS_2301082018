@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ResultScreen extends StatelessWidget {
   final String kode;
-  final String namaPeminjam; // Fixed parameter name here
+  final String namaPeminjam;
   final String kodePeminjaman;
   final String kodeNasabah;
   final String namaNasabah;
@@ -24,7 +24,6 @@ class ResultScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Convert jumlahPinjaman to double and lamaPinjaman to int
     final double jumlahPinjamanParsed = double.parse(jumlahPinjaman);
     final int lamaPinjamanParsed = int.parse(lamaPinjaman);
 
@@ -37,7 +36,7 @@ class ResultScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Hasil Perhitungan'),
       ),
-      body: ListView(  // Change Column to ListView
+      body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
           _buildInfoRow('Kode', kode),
