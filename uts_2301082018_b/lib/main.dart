@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSwatch(
           primarySwatch: Colors.teal,
         ).copyWith(
-          secondary: Colors.orange, // Set your accent color here
+          secondary: Colors.orange,
         ),
         fontFamily: 'Arial',
         textTheme: const TextTheme(
